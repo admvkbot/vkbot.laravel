@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    BOT 1.0
+                    VKBOT 1.0
                 </div>
 
                 <div class="links">
