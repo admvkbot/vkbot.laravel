@@ -1,7 +1,9 @@
 php artisan make:migration create_accounts_table --create=accounts
 php artisan migrate 
 php artisan migrate:refresh
+
 php artisan route:clear
 php artisan view:clear
 php artisan cache:clear
 php artisan config:clear
+php artisan config:cache
