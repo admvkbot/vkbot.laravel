@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/admin', function () {
     $vars = DB::table('accounts')->get();
     return view('admin', compact('vars'));
