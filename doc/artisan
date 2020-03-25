@@ -8,3 +8,10 @@ php artisan cache:clear
 php artisan config:clear
 php artisan config:cache
 
+
+php artisan make:seeder AdminOrderProductsSeeder
+php artisan migrate:fresh
+php artisan migrate:refresh --seed
+
+composer update
+
