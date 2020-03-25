@@ -1,0 +1,6 @@
+[Exception]: возникла ошибка:
+[Exception]: текст: {"error":{"error_code":3,"error_msg":"Unknown method passed","request_params":[{"key":"method","value":"Users.Search"},{"key":"oauth","value":"1"},{"key":"sort","value":"1"},{"key":"country","value":"12"},{"key":"online","value":"1"},{"key":"per_page","value":"40"},{"key":"photo","value":"1"},{"key":"section","value":"people"},{"key":"status","value":"5"},{"key":"v","value":"5.103"},{"key":"random_id","value":"1262949324"}]}}
+[Exception]: код ошибки: 3
+[Exception]: файл: C:\WORK\VK\php\simplevk-master\src\vk_api.php:232
+[Exception]: путь ошибки: #0 C:\WORK\VK\php\test.php(19): DigitalStar\vk_api\vk_api->request('Users.Search', Array)
+#1 {main}

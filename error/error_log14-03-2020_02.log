@@ -1,0 +1,36 @@
+[Exception]: возникла ошибка:
+[Exception]: текст: null
+[Exception]: код ошибки: 0
+[Exception]: файл: C:\WORK\VK\php\simplevk-master\src\Auth.php:328
+[Exception]: путь ошибки: #0 C:\WORK\VK\php\simplevk-master\src\Auth.php(248): DigitalStar\vk_api\Auth->generateAccessTokenMobile(NULL, NULL)
+#1 C:\WORK\VK\php\simplevk-master\src\vk_api.php(63): DigitalStar\vk_api\Auth->getAccessToken()
+#2 C:\WORK\VK\php\simplevk-master\src\vk_api.php(81): DigitalStar\vk_api\vk_api->__construct('37125342029', 'o8g*&g8&G8&8&F0...', '5.4')
+#3 C:\WORK\VK\php\test.php(20): DigitalStar\vk_api\vk_api::create('37125342029', 'o8g*&g8&G8&8&F0...', '5.4')
+#4 {main}
+[Exception]: возникла ошибка:
+[Exception]: текст: null
+[Exception]: код ошибки: 0
+[Exception]: файл: C:\WORK\VK\php\simplevk-master\src\Auth.php:328
+[Exception]: путь ошибки: #0 C:\WORK\VK\php\simplevk-master\src\Auth.php(248): DigitalStar\vk_api\Auth->generateAccessTokenMobile(NULL, NULL)
+#1 C:\WORK\VK\php\simplevk-master\src\vk_api.php(63): DigitalStar\vk_api\Auth->getAccessToken()
+#2 C:\WORK\VK\php\simplevk-master\src\vk_api.php(81): DigitalStar\vk_api\vk_api->__construct('37125342029', 'o8g*&g8&G8&8&F0...', '5.4')
+#3 C:\WORK\VK\php\test.php(20): DigitalStar\vk_api\vk_api::create('37125342029', 'o8g*&g8&G8&8&F0...', '5.4')
+#4 {main}
+[Exception]: возникла ошибка:
+[Exception]: текст: null
+[Exception]: код ошибки: 0
+[Exception]: файл: C:\WORK\VK\php\simplevk-master\src\Auth.php:328
+[Exception]: путь ошибки: #0 C:\WORK\VK\php\simplevk-master\src\Auth.php(248): DigitalStar\vk_api\Auth->generateAccessTokenMobile(NULL, NULL)
+#1 C:\WORK\VK\php\simplevk-master\src\vk_api.php(63): DigitalStar\vk_api\Auth->getAccessToken()
+#2 C:\WORK\VK\php\simplevk-master\src\vk_api.php(81): DigitalStar\vk_api\vk_api->__construct('37125342029', 'o8g*&g8&G8&8&F0...', '5.4')
+#3 C:\WORK\VK\php\test.php(18): DigitalStar\vk_api\vk_api::create('37125342029', 'o8g*&g8&G8&8&F0...', '5.4')
+#4 {main}
+[Exception]: возникла ошибка:
+[Exception]: текст: null
+[Exception]: код ошибки: 0
+[Exception]: файл: C:\WORK\VK\php\simplevk-master\src\Auth.php:329
+[Exception]: путь ошибки: #0 C:\WORK\VK\php\simplevk-master\src\Auth.php(248): DigitalStar\vk_api\Auth->generateAccessTokenMobile(NULL, NULL)
+#1 C:\WORK\VK\php\simplevk-master\src\vk_api.php(63): DigitalStar\vk_api\Auth->getAccessToken()
+#2 C:\WORK\VK\php\simplevk-master\src\vk_api.php(81): DigitalStar\vk_api\vk_api->__construct('37125342029', 'o8g*&g8&G8&8&F0...', '5.4')
+#3 C:\WORK\VK\php\test.php(18): DigitalStar\vk_api\vk_api::create('37125342029', 'o8g*&g8&G8&8&F0...', '5.4')
+#4 {main}
