@@ -19,7 +19,7 @@
     $app_path = preg_replace("#[^/]+$#", "", $allowed_hosts);
     $app_path = preg_replace("/public/", "", $app_path);
 
-    if (!defined('path')) define('PATH', $app_path);
+    if (!defined('PATH')) define('PATH', $app_path);
     if (!defined('ADMIN')) define('ADMIN', PATH . 'admin/index');
 
     //dd($allowed_hosts);
