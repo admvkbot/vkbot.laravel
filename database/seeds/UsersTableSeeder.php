@@ -15,12 +15,12 @@
             $data = [
                 [
                     'id' => 1,
-                    'mail' => 'a@u.ru',
+                    'email' => 'a@u.ru',
                     'password' => bcrypt('qpwoeiru'),
                 ],
                 [
                     'id' => 2,
-                    'mail' => 'u@u.ru',
+                    'email' => 'u@u.ru',
                     'password' => bcrypt(12345678),
                 ],
             ];
