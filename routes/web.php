@@ -17,8 +17,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', function () {
-    $vars = DB::table('accounts')->get();
-    return view('admin', compact('vars'));
-});
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+/** Admin site **/
+Route::group(['middleware' => ['status', 'auth']], function () {
+    $groupData = [
+        'namespace' => 'Bot\Admin',
+        'prefix' => 'admin',
+    ];
+    Route::group($groupData, function (){
+       Route::resource('index', 'MainController')
+           ->names('bot.admin.index');
+
+    });
+});

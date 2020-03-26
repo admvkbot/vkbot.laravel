@@ -2,12 +2,29 @@ php artisan make:migration create_accounts_table --create=accounts
 php artisan migrate 
 php artisan migrate:refresh
 
-
-
-
 php artisan route:clear
 php artisan view:clear
 php artisan cache:clear
 php artisan config:clear
 php artisan config:cache
 
+
+php artisan make:seeder AdminOrderProductsSeeder
+php artisan make:seeder RolesTableSeeder
+php artisan make:seeder UserRolesTableSeeder
+php artisan migrate:fresh
+php artisan migrate:refresh --seed
+
+composer update
+
+composer require laravel/ui --dev
+php artisan ui vue --auth
+
+php artisan make:model Models/Role
+php artisan make:model Models/UserRole
+php artisan make:model Models/Admin/User
+
+
+для css нужно установисть https://nodejs.org/en/download/
+и потом
+npm install && npm run dev
