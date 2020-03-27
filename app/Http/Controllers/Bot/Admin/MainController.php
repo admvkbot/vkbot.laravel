@@ -10,6 +10,8 @@ class MainController extends AdminBaseController
 
 
     public function index(){
+
+
         return view('bot.admin.main.index');
     }
 

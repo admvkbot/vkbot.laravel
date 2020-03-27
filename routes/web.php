@@ -32,5 +32,8 @@ Route::group(['middleware' => ['status', 'auth']], function () {
        Route::resource('index', 'MainController')
            ->names('bot.admin.index');
 
+
     });
 });
+
+Route::get('user/index', 'Bot\User\MainController@index');
