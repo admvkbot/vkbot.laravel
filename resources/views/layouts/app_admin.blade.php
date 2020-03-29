@@ -134,7 +134,7 @@
                         <li><a href="">Own lists</a></li>
                     </ul>
                 </li>
-
+                <li><a href=""><i class="fa fa-gear"></i> <span>Preferences</span></a></li>
             <!-- search form -->
 
             <form action="" method="get" autocomplete="off"  style="position: absolute;">

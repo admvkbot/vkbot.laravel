@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVkAccountsTable extends Migration
+class CreateFirstMessagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,12 @@ class CreateVkAccountsTable extends Migration
      */
     public function up()
     {
-        Schema::create('accounts', function (Blueprint $table) {
+        Schema::create('first_messages', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
             $table->bigIncrements('id');
-            $table->boolean('status');
-            $table->string('login');
-            $table->string('password');
-            $table->text('useragent');
+            $table->text('message');
             $table->timestamps();
-
         });
     }
 
@@ -33,6 +29,6 @@ class CreateVkAccountsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('accounts');
+        Schema::dropIfExists('first_messages');
     }
 }

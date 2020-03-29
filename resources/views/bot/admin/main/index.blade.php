@@ -33,8 +33,8 @@
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
-                        <h4>Tasks</h4>
-                        <p>Active</p>
+                        <h4>Tasks: {{$countTasks}}</h4>
+                        <p>Active: <span style="color: greenyellow">{{$countActiveTasks}}</span></p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-compose"></i>
