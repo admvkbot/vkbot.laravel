@@ -14,8 +14,15 @@ class MainController extends AdminBaseController
 
         $countTasks = MainRepository::getCountTasks();
         $countActiveTasks = MainRepository::getCountActiveTasks();
+        $countUnreadMessages = MainRepository::getCountUnreadMessages();
+        $countTaskMessages = MainRepository::getCountTasksMessages();
 
-        return view('bot.admin.main.index', compact('countTasks', 'countActiveTasks'));
+        return view('bot.admin.main.index', compact(
+            'countTasks',
+            'countActiveTasks',
+            'countUnreadMessages',
+            'countTaskMessages'
+            ));
     }
 
 

@@ -25,12 +25,11 @@
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
-<style>
-    .wrapper{
-        overflow:hidden;
-    }
-</style>
-
+    <style>
+        .wrapper{
+            overflow:hidden;
+        }
+    </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -178,6 +177,19 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 
 <script>
+    function getMessage(){
+        $.ajax({
+            type:'POST',
+            url:'/getmsg',
+            data:{"_token": "{{ csrf_token() }}"},
+            success:function(data){
+                $("#msg").html(data.msg);
+            }
+        });
+    }
+</script>
+
+<script>
     var pathd = '{{PATH}}';
 </script>
 <!-- jQuery 3 -->
@@ -193,6 +205,5 @@
 <script src="{{asset('adminlte/dist/js/adminlte.min.js')}}"></script>
 
 <!-- === = ===  -->
-
 </body>
 </html>

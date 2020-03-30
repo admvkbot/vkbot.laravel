@@ -16,10 +16,20 @@ class CreateListsTable extends Migration
         Schema::create('lists', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
-            $table->bigIncrements('id');
+            $table->Increments('id');
+            $table->Integer('task_id')->unsigned();
             $table->string('name');
             $table->text('description');
             $table->timestamps();
+
+            $table->index('task_id');
+
+            $table->foreign('task_id')
+                ->references('id')
+                ->on('tasks')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
         });
     }
 

@@ -11,13 +11,20 @@
         @endcomponent
     </section>
 
+
     <!-- main content -->
     <section class="content">
+
+        <div id = 'msg'>This message will be replaced using Ajax.
+            Click the button to replace the message.</div>
+    @php
+    echo Form::button('Replace Message',['onClick'=>'getMessage()']);
+    @endphp
         <!-- Small boxes (Stat box) -->
         <div class="row">
             <div class="col-lg-3 col-xs-6">
                 <!-- small box -->
-                <div class="small-box bg-aqua">
+                <div class="small-box bg-yellow-gradient">
                     <div class="inner">
                         <h4>Processes</h4>
                         <p>Active</p>
@@ -31,10 +38,10 @@
             <!-- ./col -->
             <div class="col-lg-3 col-xs-6">
                 <!-- small box -->
-                <div class="small-box bg-green">
+                <div class="small-box bg-aqua-gradient">
                     <div class="inner">
-                        <h4>Tasks: {{$countTasks}}</h4>
-                        <p>Active: <span style="color: greenyellow">{{$countActiveTasks}}</span></p>
+                        <h4>Tasks:&nbsp;&nbsp;&nbsp;{{$countTasks}}</h4>
+                        <p><a href="#" style="color: #fff"><span style="text-decoration: underline">Active:</span>&nbsp;&nbsp;<span style="color: red"><strong>{{$countActiveTasks}}</strong></span></a></p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-compose"></i>
@@ -45,10 +52,11 @@
             <!-- ./col -->
             <div class="col-lg-3 col-xs-6">
                 <!-- small box -->
-                <div class="small-box bg-yellow">
+                <div class="small-box bg-green-gradient">
                     <div class="inner">
-                        <h4>Messages</h4>
-                        <p>Answered</p>
+                        <h4>Messages:</h4>
+                        <p><a href="#" style="color: #fff"><span style="text-decoration: underline">Unread:</span>&nbsp;&nbsp;<span style="color: red"><strong>{{$countUnreadMessages}}</strong></span></a>&nbsp;
+                            (from {{$countTaskMessages}} task@php $countTaskMessages>1?print('s'):1 @endphp)</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-paper-airplane"></i>

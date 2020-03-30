@@ -13,9 +13,11 @@ class FirstMessagesTableSeeder extends Seeder
     {
         $data = [
             [
+                'task_id' => 1,
                 'message' => 'Привет :) Как дела?',
             ],
             [
+                'task_id' => 2,
                 'message' => 'Здравствуйте! До свидания!',
             ],
         ];

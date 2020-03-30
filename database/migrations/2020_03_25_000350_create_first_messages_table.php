@@ -16,9 +16,19 @@ class CreateFirstMessagesTable extends Migration
         Schema::create('first_messages', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
-            $table->bigIncrements('id');
+            $table->Increments('id');
+            $table->Integer('task_id')->unsigned();
             $table->text('message');
             $table->timestamps();
+
+            $table->index('task_id');
+
+            $table->foreign('task_id')
+                ->references('id')
+                ->on('tasks')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
         });
     }
 

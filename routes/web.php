@@ -37,3 +37,30 @@ Route::group(['middleware' => ['status', 'auth']], function () {
 });
 
 Route::get('user/index', 'Bot\User\MainController@index');
+
+
+Route::get('ajax',function(){
+    return view('auth.login');
+});
+
+Route::get('/getmsg',function(){
+    return view('auth.login');
+});
+
+Route::post('/getmsg','AjaxController@index');
+
+
+// POST-запрос при нажатии на нашу кнопку.
+/////Route::post('more', array('before'=>'csrf-ajax', 'as'=>'more', 'uses'=>'HomeController@getMoreEvents'));
+
+
+// Фильтр, срабатывающий перед пост запросом.
+/*Route::filter('csrf-ajax', function()
+{
+    if (Session::token() != Request::header('x-csrf-token'))
+    {
+        throw new Illuminate\Session\TokenMismatchException;
+    }
+});
+Route::
+*/

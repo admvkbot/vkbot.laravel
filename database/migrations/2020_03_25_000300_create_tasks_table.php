@@ -16,31 +16,22 @@ class CreateTasksTable extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
-            $table->bigIncrements('id');
+            $table->Increments('id');
             $table->char('status'); //0 - paused, 1 - active, 2 - archived
             $table->string('name');
             $table->text('description');
-            $table->bigInteger('message_id')->unsigned();
-            $table->bigInteger('list_id')->unsigned();
             $table->char('mess_per_day');
-            $table->integer('activity_id')->unsigned()->default(1);
+            $table->Integer('activity_id')->unsigned()->default(1);
             $table->timestamps();
 
-            $table->index('message_id');
+            $table->index('activity_id');
 
-            $table->foreign('message_id')
+            $table->foreign('activity_id')
                 ->references('id')
-                ->on('first_messages')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+                ->on('activities')
+                ->onDelete('no action')
+                ->onUpdate('no action');
 
-            $table->index('list_id');
-
-            $table->foreign('list_id')
-                ->references('id')
-                ->on('lists')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
         });
     }
 

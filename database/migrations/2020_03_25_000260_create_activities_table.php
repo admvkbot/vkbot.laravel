@@ -16,7 +16,7 @@ class CreateActivitiesTable extends Migration
         Schema::create('activities', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
-            $table->bigIncrements('id');
+            $table->Increments('id');
             $table->string('name');
             $table->text('description');
             $table->integer('delay_start')->default(3)->unsigned(); //minutes

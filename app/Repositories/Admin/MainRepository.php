@@ -37,5 +37,20 @@ class MainRepository extends CoreRepository
         return $count;
     }
 
+    /** Get counts unread messages */
+    public static function getCountUnreadMessages(){
+        $count = \DB::table('messages')
+            ->where('status', 'unread')
+            ->get()
+            ->count();
+        return $count;
+    }
 
+    /** Get number of tasks for which there are unread messages */
+    public static function getCountTasksMessages(){
+        $count = \DB::table('messages')
+            ->where('status', 'unread')
+            ->get()->unique('task_id')->count();
+        return $count;
+    }
 }
