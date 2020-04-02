@@ -28,3 +28,8 @@ php artisan make:model Models/Admin/User
 для css нужно установисть https://nodejs.org/en/download/
 и потом
 npm install && npm run dev
+
+
+php artisan route:list
+
+composer require laravelcollective/html

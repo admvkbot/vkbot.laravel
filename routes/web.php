@@ -23,7 +23,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 /** Admin site **/
-Route::group(['middleware' => ['status', 'auth']], function () {
+/***Route::group(['middleware' => ['status', 'auth']], function () {
     $groupData = [
         'namespace' => 'Bot\Admin',
         'prefix' => 'admin',
@@ -32,5 +32,55 @@ Route::group(['middleware' => ['status', 'auth']], function () {
        Route::resource('index', 'MainController')
            ->names('bot.admin.index');
 
+
     });
+});***/
+
+Route::group(['middleware' => ['status', 'auth']], function () {
+$groupData = [
+'namespace' => 'Bot\Admin',
+'prefix' => 'admin',
+];
+Route::group($groupData, function (){
+Route::resource('index', 'MainController')
+->names('bot.admin.index');
+
+//Route::get('/cruds', 'CrudController@index');
+//Route::post('/cruds', 'CrudController@update');
+
+Route::resource('cruds.type', 'CrudController')
+        ->names('bot.admin.index');
+
+Route::resource('cruds', 'CrudController')
+        ->names('bot.admin.index');
 });
+});
+
+Route::get('user/index', 'Bot\User\MainController@index');
+
+
+/*Route::get('ajax',function(){
+    return view('auth.login');
+});
+
+Route::get('/getmsg',function(){
+    return view('auth.login');
+});
+
+Route::post('/getmsg','AjaxController@index');
+*/
+
+// POST-запрос при нажатии на нашу кнопку.
+/////Route::post('more', array('before'=>'csrf-ajax', 'as'=>'more', 'uses'=>'HomeController@getMoreEvents'));
+
+
+// Фильтр, срабатывающий перед пост запросом.
+/*Route::filter('csrf-ajax', function()
+{
+    if (Session::token() != Request::header('x-csrf-token'))
+    {
+        throw new Illuminate\Session\TokenMismatchException;
+    }
+});
+Route::
+*/
