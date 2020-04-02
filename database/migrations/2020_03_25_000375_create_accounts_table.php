@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVkAccountsTable extends Migration
+class CreateAccountsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,11 +17,13 @@ class CreateVkAccountsTable extends Migration
             $table->engine = 'InnoDB';
 
             $table->bigIncrements('id');
+            $table->string('account_id')->unique();
             $table->boolean('status');
-            $table->string('login');
-            $table->string('password');
-            $table->text('useragent');
-            $table->timestamps();
+            $table->char('type'); // 0: normal
+            $table->timestamp('added_at');
+            $table->timestamp('last_login_at')->nullable();
+            $table->timestamp('last_action_at')->nullable();
+            $table->text('cookie')->nullable();
 
         });
     }

@@ -19,7 +19,7 @@ class CreateFirstMessagesTable extends Migration
             $table->Increments('id');
             $table->Integer('task_id')->unsigned();
             $table->text('message');
-            $table->timestamps();
+            $table->timestamp('added_at');
 
             $table->index('task_id');
 

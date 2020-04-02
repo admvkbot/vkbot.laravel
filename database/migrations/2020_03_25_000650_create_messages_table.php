@@ -17,21 +17,24 @@ class CreateMessagesTable extends Migration
             $table->engine = 'InnoDB';
 
             $table->bigIncrements('id');
-            $table->Integer('task_id')->unsigned();
-            $table->string('account');
+            $table->bigInteger('own_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->boolean('direction'); // 0 - incoming, 1 - outgoing
             $table->text('message');
-            $table->enum('status', ['paused', 'prepared', 'sent', 'unread', 'read', 'archived']);
-            $table->dateTime('created')->nullable();
-            $table->dateTime('sent')->nullable();
-            $table->dateTime('received')->nullable();
-            $table->dateTime('was_read')->nullable();
+            // status - 0:'wait', 1:'prepared', 2:'sent', 3:'unread', 4:'read', 5:'archived'
+            $table->char('status');
+            $table->boolean('overview_status')->default(1);
+            $table->timestamps();
 
-            $table->index('task_id');
-
-            $table->foreign('task_id')
+            $table->foreign('user_id')
                 ->references('id')
-                ->on('tasks')
+                ->on('accounts')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('own_id')
+                ->references('id')
+                ->on('own_accounts')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 

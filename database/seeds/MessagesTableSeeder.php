@@ -11,14 +11,15 @@ class MessagesTableSeeder extends Seeder
      */
     public function run()
     {
-
+        $stamp= new DateTime;
         $data = [
             [
-                'task_id' => 1,
-                'account' => '585966911',
+                'own_id' => 1,
+                'user_id' => 1,
                 'direction' => 0,
                 'message' => 'Норм',
-                'status' => 'unread',
+                'status' => 3,
+                'created_at' => $stamp,
             ],
         ];
         DB::table('messages')->insert($data);

@@ -40,17 +40,20 @@ class MainRepository extends CoreRepository
     /** Get counts unread messages */
     public static function getCountUnreadMessages(){
         $count = \DB::table('messages')
-            ->where('status', 'unread')
+            ->where('status', 3)
             ->get()
             ->count();
         return $count;
     }
 
-    /** Get number of tasks for which there are unread messages */
-    public static function getCountTasksMessages(){
-        $count = \DB::table('messages')
-            ->where('status', 'unread')
-            ->get()->unique('task_id')->count();
+    /** Get counts new friends */
+    public static function getCountNewFriends(){
+        $count = \DB::table('friends')
+            ->where('status', 0)
+            ->get()
+            ->count();
         return $count;
     }
+
+
 }

@@ -17,23 +17,12 @@ class CreateOwnAccountsTable extends Migration
             $table->engine = 'InnoDB';
 
             $table->bigIncrements('id');
-            $table->Integer('rule_id')->unsigned();
-            $table->enum('write_status', ['allow', 'deny']);
-            $table->string('name');
+            $table->boolean('status');
             $table->string('login');
             $table->string('password');
-            $table->date('birthday');
             $table->text('useragent');
-            $table->dateTime('last_send');
+            $table->string('description')->nullable();
             $table->timestamps();
-
-            $table->index('rule_id');
-
-            $table->foreign('rule_id')
-                ->references('id')
-                ->on('rules')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
 
         });
     }
