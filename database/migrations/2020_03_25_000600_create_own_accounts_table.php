@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVkAccountsTable extends Migration
+class CreateOwnAccountsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,25 +13,16 @@ class CreateVkAccountsTable extends Migration
      */
     public function up()
     {
-        Schema::create('accounts', function (Blueprint $table) {
+        Schema::create('own_accounts', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
             $table->bigIncrements('id');
-            $table->Integer('rule_id')->unsigned();
-            $table->enum('write_status', ['allow', 'deny']);
-            $table->string('name');
+            $table->boolean('status');
             $table->string('login');
             $table->string('password');
             $table->text('useragent');
+            $table->string('description')->nullable();
             $table->timestamps();
-
-            $table->index('rule_id');
-
-            $table->foreign('rule_id')
-                ->references('id')
-                ->on('rules')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
 
         });
     }
@@ -43,6 +34,6 @@ class CreateVkAccountsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('accounts');
+        Schema::dropIfExists('own_accounts');
     }
 }

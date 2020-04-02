@@ -25,11 +25,21 @@
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
-<style>
-    .wrapper{
-        overflow:hidden;
-    }
-</style>
+    <style>
+        .wrapper{
+            overflow:hidden;
+        }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+
+    <!-- jQuery 3 -->
+<!--<script src="{{asset('adminlte/bower_components/jquery/dist/jquery.min.js')}}"></script>-->
+
+    <!-- Bootstrap 3.3.7 -->
+<!--<script src="{{asset('adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>-->
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -134,7 +144,7 @@
                         <li><a href="">Own lists</a></li>
                     </ul>
                 </li>
-
+                <li><a href=""><i class="fa fa-gear"></i> <span>Preferences</span></a></li>
             <!-- search form -->
 
             <form action="" method="get" autocomplete="off"  style="position: absolute;">
@@ -175,16 +185,10 @@
 
 
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-
 <script>
     var pathd = '{{PATH}}';
 </script>
-<!-- jQuery 3 -->
-<script src="{{asset('adminlte/bower_components/jquery/dist/jquery.min.js')}}"></script>
 
-<!-- Bootstrap 3.3.7 -->
-<script src="{{asset('adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 <!-- Validator -->
 <script src="{{asset('js/validator.js')}}"></script>
 <!-- Search -->
@@ -193,6 +197,5 @@
 <script src="{{asset('adminlte/dist/js/adminlte.min.js')}}"></script>
 
 <!-- === = ===  -->
-
 </body>
 </html>
