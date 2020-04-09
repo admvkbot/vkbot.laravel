@@ -27,7 +27,9 @@
                         $.each(last_messages.data, function (key, value) {
                             var m=value.description?value.description:value.login;
                             rows=rows+'<tr>';
-                            rows=rows+'<td style="width: 73%"><a href="">'+value.message+'</a> </td>';
+                            rows=rows+'<td style="width: 73%"><a href="#" data-toggle="modal" ' +
+                                'data-target="#overviewModal" data-user="'+value.account_id+'" ' +
+                                'data-owns="'+value.login+'">'+value.message+'</a> </td>';
                             rows=rows+'<td>'+m+'</a> </td>';
                             rows=rows+'<td style="position:absolute; right: 0px"><a href="#" ' +
                                 'onclick="hideRow('+value.id+',\'message\');return false;">' +

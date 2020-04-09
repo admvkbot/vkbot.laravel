@@ -27,7 +27,90 @@
 
     <style>
         .wrapper{
-            overflow:hidden;
+            overflow:hidden
+        }
+        .modal-body {
+            overflow-y: auto;
+        }
+        .modal-dialog {
+            width: 100%;
+        }
+        .mess {
+            padding: 5px;
+            margin: 10px 5px 10px 5px;
+            color: #000;
+            border-radius: 8px;
+            width: 75%;
+            text-align: left;
+            -webkit-box-shadow: 1px 1px 6px -2px rgba(105,105,105,1);
+            -moz-box-shadow: 1px 1px 6px -2px rgba(105,105,105,1);
+            box-shadow: 1px 1px 6px -2px rgba(105,105,105,1);
+        }
+        .messprep {
+            background-color: #fff;
+            color: #aaa;
+            float: right;
+        }
+        .messout {
+            background-color: #fff;
+            float: right;
+        }
+        .messin {
+            background-color: #def1fd;
+        }
+        .nobutton {
+            border: none;
+        }
+        li {
+            list-style-type: none;
+            padding: 6px;
+        }
+        .tabl {
+            width: 100%;
+        }
+        .tabl-top {
+            background-color: #f4f4f4;
+        }
+        .tabl-right {
+            float: right;
+        }
+        .tabl-right-1 {
+            position: absolute;
+            right: 20px;
+/*            margin-left: 90%;*/
+        }
+        .tabl-right-2 {
+            position: absolute;
+            right: 60px;
+            /*margin-left: 80%;*/
+        }
+        .tabl-right-3 {
+            position: absolute;
+            right: 110px;
+            /*margin-left: 60%;*/
+        }
+        .row-10 {
+            background-color: #f9fcd8;
+        }
+        .row-20 {
+            background-color: #f8fdbc;
+        }
+        .row-1 {
+            background-color: #def1fd;
+        }
+        .row-2 {
+            background-color: #f1f8fd;
+        }
+        .txt-grey {
+            color: #aaa;
+        }
+        .caret-right {
+            margin-top: -6px;
+            float: right;
+        }
+        .caret-right2 {
+            margin-top: 8px;
+            float: right;
         }
     </style>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>

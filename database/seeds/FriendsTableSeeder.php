@@ -15,7 +15,7 @@ class FriendsTableSeeder extends Seeder
         $data = [
             'own_id' => 1,
             'user_id' => 1,
-            'status' => 0,
+            'direction' => 1,
             'created_at' => $stamp,
         ];
         DB::table('friends')->insert($data);

@@ -50,7 +50,6 @@
 
     <!-- main content -->
     <section class="content">
-
         <!-- Small boxes (Stat box) -->
         <div class="row">
             <!-- ./col -->
@@ -116,12 +115,11 @@
         @include('bot.admin.main.include.ajaxMessages')
     </div>
         <!--modal-->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="overviewModal" role="dialog" aria-labelledby="overviewModalLabel" aria-hidden="true">
             <div class="modal-dialog box box-info" style="width: 50%" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                    <div class="modal-header box-header">
+                        <h5 class="modal-title box-title" id="overviewModalLabel">New message</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -129,12 +127,10 @@
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Recipient:</label>
-                                <input type="text" class="form-control" id="recipient-name" />
+                                <div style="overflow: scroll; height: 350px; background-color: #eee;" id="messages_text"></div>
                             </div>
                             <div class="form-group">
-                                <label for="message-text" class="col-form-label">Message:</label>
-                                <textarea class="form-control" id="message-text"></textarea>
+                                <textarea class="form-control" rows="3" id="message_text"></textarea>
                             </div>
                         </form>
                     </div>
@@ -146,18 +142,31 @@
             </div>
         </div>
         <script>
-            $('#exampleModal').on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget) // Button that triggered the modal
-                var recipient = button.data('whatever') // Extract info from data-* attributes
+            $('#overviewModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget)
+                var recipient = button.data('user'); // Extract info from data-* attributes
                 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
                 // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                var own = button.data('owns');
                 var modal = $(this)
-                modal.find('.modal-title').text('New message to ' + 'USER')
-                modal.find('.modal-body input').val(recipient)
+                modal.find('.modal-title').text('Conversation with ' + recipient)
+                modal.find('.form-group div').text('Loading...')
+                $.ajax({url: "/admin/cruds/"+recipient+"/type/messages/id/"+own, success: function(result){
+                    var out='<table><tbody>';
+                    $.each(result.data, function (key, value) {
+                        var cls = value.direction?"messout":"messin";
+                        if (value.status==1){cls="messprep";}
+                        out+='<tr><td><div class="mess '+cls+'">'+value.message+'</div></td></tr>';
+                    });
+                    out+='</tbody></table>';
+                    $('#message_text').focus();
+                    modal.find('.form-group div').html(out);
+                    $('#messages_text').scrollTop(9999);
+                }});
+/*                setInterval(function(){
+                    $('#messages_text').scrollTop = 9999;
+                }, 100);*/
             })
         </script>
-        <!--end of modal -->
-
-    </section>
 
 @endsection
