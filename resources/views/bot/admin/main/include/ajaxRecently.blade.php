@@ -26,7 +26,8 @@
                         $.each(last_friends.data, function (key, value) {
                             var m=value.description?value.description:value.login;
                             rows=rows+'<tr>';
-                            rows=rows+'<td><a href="">'+value.account_id+'</a> </td>';
+                            rows=rows+'<td><a href="#" data-toggle="modal" data-target="#overviewModal" ' +
+                                'data-user="'+value.account_id+'" data-owns="'+value.login+'">'+value.account_id+'</a> </td>';
                             rows=rows+'<td>'+m+'</a> </td>';
                             rows=rows+'<td style="position:absolute; right: 0px">' +
                                 '<a href="#" onclick="hideRow('+value.id+',\'friend\');return false;">' +

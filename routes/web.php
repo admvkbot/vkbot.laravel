@@ -37,23 +37,27 @@ Route::get('/home', 'HomeController@index')->name('home');
 });***/
 
 Route::group(['middleware' => ['status', 'auth']], function () {
-$groupData = [
-'namespace' => 'Bot\Admin',
-'prefix' => 'admin',
-];
-Route::group($groupData, function (){
-Route::resource('index', 'MainController')
-->names('bot.admin.index');
+    $groupData = [
+        'namespace' => 'Bot\Admin',
+        'prefix' => 'admin',
+    ];
+    Route::group($groupData, function (){
+        Route::resource('index', 'MainController')
+            ->names('bot.admin.index');
 
 //Route::get('/cruds', 'CrudController@index');
 //Route::post('/cruds', 'CrudController@update');
 
-Route::resource('cruds.type', 'CrudController')
-        ->names('bot.admin.index');
+        Route::resource('cruds.type.id', 'CrudController')
+            ->names('bot.admin.index');
+        Route::resource('cruds.type', 'CrudController')
+            ->names('bot.admin.index');
 
-Route::resource('cruds', 'CrudController')
-        ->names('bot.admin.index');
-});
+        Route::resource('cruds', 'CrudController')
+            ->names('bot.admin.index');
+        Route::resource('communication', 'CommController')
+            ->names('bot/admin.communication');
+    });
 });
 
 Route::get('user/index', 'Bot\User\MainController@index');

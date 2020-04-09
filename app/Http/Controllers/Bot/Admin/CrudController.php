@@ -83,9 +83,22 @@ class CrudController extends AdminBaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($f, $type, $s)
     {
-        return view('ajax2');
+        $perpage = 10;
+        $result = "Error";
+        switch ($type){
+            case 'messages':
+                $result = $this->messageRepository->getMessagesByUserLogin($f, $s, $perpage);
+                break;
+            case 'allmessages':
+                $result = $this->messageRepository->getMessagesByOwnId($f, $s, 100);
+                break;
+            case 'allfriends':
+                $result = $this->friendRepository->getFriendsByOwnId($f, $s, 100);
+                break;
+        }
+        return response()->json($result);
     }
 
     /**
@@ -96,10 +109,6 @@ class CrudController extends AdminBaseController
      */
     public function edit($id)
     {
-        //$data = Message::find($id)
-        //$id = $request->get('id');
-        //dd($id);
-        //return view();
         return view('ajax3');
     }
 
@@ -118,6 +127,14 @@ class CrudController extends AdminBaseController
         }
         if ($type == 'friend') {
             $result = $this->friendRepository->hideFriendOverview($id);
+        }
+        if ($type == 'all') {
+            preg_match('/(\d+)\-(\d+)/', $id, $matches);
+            dd($matches);
+            if (!$matches[1] || !$matches[2])
+                return 'Error ID';
+            $result = $this->messageRepository->hideMessageOverview($matches[1]);
+            $result .= $this->friendRepository->hideFriendOverview($matches[2]);
         }
         return response()->json($result);
     }
