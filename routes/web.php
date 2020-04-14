@@ -57,6 +57,8 @@ Route::group(['middleware' => ['status', 'auth']], function () {
             ->names('bot.admin.index');
         Route::resource('communication', 'CommController')
             ->names('bot/admin.communication');
+        Route::resource('lists/categories', 'Lists\CategoriesController')
+            ->names('bot/admin.lists.categories');
     });
 });
 

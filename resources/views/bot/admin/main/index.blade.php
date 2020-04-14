@@ -127,7 +127,7 @@
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                                <div style="overflow: scroll; height: 350px; background-color: #eee;" id="messages_text"></div>
+                                <div style="overflow: auto; height: 350px; background-color: #eee;" id="messages_text"></div>
                             </div>
                             <div class="form-group">
                                 <textarea class="form-control" rows="3" id="message_text"></textarea>

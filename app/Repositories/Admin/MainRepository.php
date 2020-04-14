@@ -64,11 +64,11 @@ class MainRepository extends CoreRepository
     }
 
     /** Get own_ids by task_id */
-    public static function getOwnsByTask($task_id)
+    public static function getOwnsByTask($task_id, $id = ['*'])
     {
         $own_ids = \DB::table('tasks_to_own_accounts')
             ->where('task_id', $task_id)
-            ->get();
+            ->get($id);
         return $own_ids;
     }
 
@@ -80,4 +80,5 @@ class MainRepository extends CoreRepository
                 ->get(['id', 'login', 'description']);
             return $own;
     }
+
 }

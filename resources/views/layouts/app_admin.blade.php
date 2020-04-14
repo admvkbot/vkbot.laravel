@@ -20,7 +20,7 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{asset('adminlte/dist/css/skins/_all-skins.min.css')}}">
 
-    <link rel="stylesheet" href="{{asset('css/my.css')}}">
+{{--    <link rel="stylesheet" href="{{asset('css/my.css')}}"> --}}
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -34,6 +34,13 @@
         }
         .modal-dialog {
             width: 100%;
+        }
+        .loading{
+            /*position: absolute;
+            margin-top: -25px;
+            right: 150px;*/
+            margin-left:40%;
+            visibility: hidden;
         }
         .mess {
             padding: 5px;
@@ -77,17 +84,29 @@
         .tabl-right-1 {
             position: absolute;
             right: 20px;
-/*            margin-left: 90%;*/
         }
         .tabl-right-2 {
             position: absolute;
             right: 60px;
-            /*margin-left: 80%;*/
         }
         .tabl-right-3 {
             position: absolute;
             right: 110px;
-            /*margin-left: 60%;*/
+        }
+        .tabl-right-4 {
+            position: absolute;
+            right: 200px;
+        }
+        .tabl-right-5 {
+            position: absolute;
+            right: 280px;
+        }
+        .tabl-left-1 {
+            position: absolute;
+            left: 150px;
+        }
+        .user-name{
+            color: black;
         }
         .row-10 {
             background-color: #f9fcd8;
@@ -111,6 +130,9 @@
         .caret-right2 {
             margin-top: 8px;
             float: right;
+        }
+        .max-width {
+            width: 100%;
         }
     </style>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
@@ -202,20 +224,9 @@
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">Menu</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li><a href=""><i class="fa fa-hand-spock-o"></i> <span>Overview</span></a></li>
-                <li><a href=""><i class="fa fa-comments-o"></i> <span>Communication</span></a></li>
-
-                <li class="treeview">
-                    <a href="#"><i class="fa fa-tasks"></i> <span>Tasks</span>
-                        <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="">Spam tasks</a></li>
-                        <li><a href="">Friends tasks</a></li>
-                    </ul>
-                </li>
+                <li><a href="/admin/index"><i class="fa fa-hand-spock-o"></i> <span>Overview</span></a></li>
+                <li><a href="{{ route('bot/admin.communication.index') }}"><i class="fa fa-comments-o"></i> <span>Communication</span></a></li>
+                <li><a href=""><i class="fa fa-tasks"></i> <span>Tasks</span></a></li>
                 <li class="treeview">
                     <a href="#"><i class="fa fa-list-alt"></i> <span>Lists</span>
                         <span class="pull-right-container">
@@ -225,9 +236,23 @@
                     <ul class="treeview-menu">
                         <li><a href="">VK lists</a></li>
                         <li><a href="">Own lists</a></li>
+                        <li><a href="{{ route('bot/admin.lists.categories.index') }}">Categories</a></li>
                     </ul>
                 </li>
-                <li><a href=""><i class="fa fa-gear"></i> <span>Preferences</span></a></li>
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-gear"></i> <span>Preferences</span>
+                        <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="">Proxy</a></li>
+                        <li><a href="">User Agents</a></li>
+                        <li><a href="">Options...</a></li>
+                    </ul>
+                </li>
+
+
             <!-- search form -->
 
             <form action="" method="get" autocomplete="off"  style="position: absolute;">

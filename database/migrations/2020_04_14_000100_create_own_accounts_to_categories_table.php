@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTasksToOwnAccountsTable extends Migration
+class CreateOwnAccountsToCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,22 @@ class CreateTasksToOwnAccountsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tasks_to_own_accounts', function (Blueprint $table) {
+        Schema::create('own_accounts_to_categories', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
             $table->bigInteger('own_id')->unsigned();
-            $table->Integer('task_id')->unsigned();
+            $table->Integer('category_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('task_id')
+            $table->foreign('own_id')
                 ->references('id')
-                ->on('tasks')
+                ->on('own_accounts')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->foreign('own_id')
-                ->references('id')->on('own_accounts')
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
@@ -41,6 +42,6 @@ class CreateTasksToOwnAccountsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tasks_to_own_accounts');
+        Schema::dropIfExists('own_accounts_to_categories');
     }
 }

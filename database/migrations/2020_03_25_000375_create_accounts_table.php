@@ -18,12 +18,11 @@ class CreateAccountsTable extends Migration
 
             $table->bigIncrements('id');
             $table->string('account_id')->unique();
-            $table->boolean('status');
-            $table->char('type'); // 0: normal
-            $table->timestamp('added_at');
-            $table->timestamp('last_login_at')->nullable();
+            $table->string('description')->nullable();
+            $table->boolean('status'); //1: active, 0: deactivated
+            $table->char('type'); // 0: new(our), 1: new(incoming friend), 2:active dialog,
             $table->timestamp('last_action_at')->nullable();
-            $table->text('cookie')->nullable();
+            $table->timestamps();
 
         });
     }

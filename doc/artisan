@@ -33,3 +33,5 @@ npm install && npm run dev
 php artisan route:list
 
 composer require laravelcollective/html
+
+php artisan make:controller Bot/Admin/ListController --resource

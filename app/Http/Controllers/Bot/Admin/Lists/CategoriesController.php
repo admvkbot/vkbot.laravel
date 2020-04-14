@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Bot\Admin;
+namespace App\Http\Controllers\Bot\Admin\Lists;
 
+use App\Http\Controllers\Bot\Admin\AdminBaseController;
 use App\Http\Controllers\Controller;
 use App\Repositories\Admin\MessageRepository;
 use App\Repositories\Admin\MainRepository;
 use App\Repositories\Admin\FriendRepository;
 use Illuminate\Http\Request;
+use App\Repositories\Admin\ListRepository;
 
-class CommController extends AdminBaseController
+class CategoriesController extends AdminBaseController
 {
     /**
      * Display a listing of the resource.
@@ -23,37 +25,22 @@ class CommController extends AdminBaseController
         //$this->commRepository = app(MessageRepository::class);
         $this->messageRepository = app(MessageRepository::class);
         $this->friendRepository = app(FriendRepository::class);
+        $this->listRepository = app(ListRepository::class);
     }
 
     public function index()
     {
-        $perpage = 10;
+        $perpage = 12;
+        $countRows = ListRepository::getCountCategories();
+        $paginator = $this->listRepository->getAllCategories($perpage);
 
-        $tasks = MainRepository::getTasks();
-        foreach ($tasks as $value) {
-            $value->owns = null;
-            $own_ids = MainRepository::getOwnsByTask($value->id);
-            //dd($own_ids);
-            $own = null;
-            $owns_arr=[];
-            foreach ($own_ids as $val) {
-                $owns = MainRepository::getOwnById($val->own_id);;
-                foreach ($owns as $v) {
-                    $val->login = $v->login;
-                    $val->description = $v->description;
-                }
-                $owns_arr[$val->own_id] = $val;
-            }
-            $value->data = $owns_arr;
-        }
-        //dd($tasks);
-        return view('bot.admin.communication.index', compact(
-            'tasks'
-        ));
-/*        'countUnreadMessages',
-            'ownMessageUsers',
-            'ownMessages',
-            'ownFriends'*/
+        return view('bot.admin.lists.categories', compact(
+                    'countRows', 'paginator'
+                ));
+                /*        'countUnreadMessages',
+                            'ownMessageUsers',
+                            'ownMessages',
+                            'ownFriends'*/
     }
 
     /**
@@ -96,7 +83,16 @@ class CommController extends AdminBaseController
      */
     public function edit($id)
     {
-        //
+//        $item = $this->listRepository->getCategoryById($id);
+        $item = $this->listRepository->getId($id);
+        if (empty($item)){
+            abort(404);
+        }
+        $category = $this->listRepository->getOneOrder($item->id);
+        if (!$category){
+            abort(404);
+        }
+        return response()->json($category);
     }
 
     /**
