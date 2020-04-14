@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class TasksToOwnAccountsTableSeeder extends Seeder
+class TasksToCategoriesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,14 +13,15 @@ class TasksToOwnAccountsTableSeeder extends Seeder
     {
         $data = [
             [
-                'own_id' => 1,
                 'task_id' => 1,
+                'category_id' => 1,
             ],
             [
-                'own_id' => 2,
                 'task_id' => 2,
+                'category_id' => 3,
             ],
         ];
-        DB::table('tasks_to_own_accounts')->insert($data);
+        DB::table('tasks_to_categories')->insert($data);
+
     }
 }

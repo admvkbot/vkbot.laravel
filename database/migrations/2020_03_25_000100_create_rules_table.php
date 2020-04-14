@@ -26,6 +26,7 @@ class CreateRulesTable extends Migration
             $table->char('own_age_max');
             $table->enum('own_sex', ['-', 'male', 'female'])->default('-');
             $table->string('own_region');
+            $table->timestamps();
         });
     }
 

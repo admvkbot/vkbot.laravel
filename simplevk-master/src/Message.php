@@ -25,6 +25,10 @@ class Message extends Base
         parent::__construct($vk_api);
     }
 
+    public static function create($array)
+    {
+    }
+
     /**
      * @return array
      */

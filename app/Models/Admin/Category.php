@@ -4,25 +4,18 @@ namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-//use Illuminate\Database\Query\Builder;
 
-class Message extends Model
+class Category extends Model
 {
     use SoftDeletes;
 
     protected $fillable = [
         'id',
-        'own_id',
-        'user_id',
-        'direction',
-        'message',
-        'status',
-        'overview_status',
-        'created_at',
-        'updated_at',
+        'title',
+        'type',
     ];
 
-    protected $table = 'messages';
+    protected $table = 'categories';
 
     public function getQualifiedDeletedAtColumn()
     {

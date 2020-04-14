@@ -19,9 +19,9 @@ class CreateFriendsTable extends Migration
             $table->Increments('id');
             $table->bigInteger('own_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
-            $table->boolean('status')->default(0); // 0 - new, 1 - done
+            $table->boolean('status')->default(0); // 0 - new, 1 - viewed, 2 - reject
             $table->boolean('direction'); // 1 - outgoing, 0 - incoming,
-            $table->timestamp('created_at');
+            $table->timestamps();
             $table->timestamp('done_at')->nullable();
 
             $table->foreign('own_id')

@@ -18,10 +18,13 @@ class CreateOwnAccountsTable extends Migration
 
             $table->bigIncrements('id');
             $table->boolean('status');
+            $table->string('description')->nullable();
             $table->string('login');
             $table->string('password');
+            $table->timestamp('last_login_at')->nullable();
+            $table->timestamp('last_action_at')->nullable();
             $table->text('useragent');
-            $table->string('description')->nullable();
+            $table->text('cookie')->nullable();
             $table->timestamps();
 
         });

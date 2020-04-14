@@ -8,7 +8,7 @@ use App\Repositories\Admin\MainRepository;
 use App\Repositories\Admin\FriendRepository;
 use Illuminate\Http\Request;
 
-class CommController extends AdminBaseController
+class VKListController extends AdminBaseController
 {
     /**
      * Display a listing of the resource.
@@ -27,33 +27,14 @@ class CommController extends AdminBaseController
 
     public function index()
     {
-        $perpage = 10;
-
-        $tasks = MainRepository::getTasks();
-        foreach ($tasks as $value) {
-            $value->owns = null;
-            $own_ids = MainRepository::getOwnsByTask($value->id);
-            //dd($own_ids);
-            $own = null;
-            $owns_arr=[];
-            foreach ($own_ids as $val) {
-                $owns = MainRepository::getOwnById($val->own_id);;
-                foreach ($owns as $v) {
-                    $val->login = $v->login;
-                    $val->description = $v->description;
-                }
-                $owns_arr[$val->own_id] = $val;
-            }
-            $value->data = $owns_arr;
-        }
-        //dd($tasks);
-        return view('bot.admin.communication.index', compact(
-            'tasks'
-        ));
-/*        'countUnreadMessages',
-            'ownMessageUsers',
-            'ownMessages',
-            'ownFriends'*/
+        return view('bot.admin.lists.categories');
+        /*        return view('bot.admin.communication.index', compact(
+                    'tasks'
+                ));
+                /*        'countUnreadMessages',
+                            'ownMessageUsers',
+                            'ownMessages',
+                            'ownFriends'*/
     }
 
     /**

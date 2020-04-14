@@ -17,21 +17,14 @@ class CreateTasksTable extends Migration
             $table->engine = 'InnoDB';
 
             $table->Increments('id');
-            $table->char('status'); //0 - paused, 1 - active, 2 - archived
+            $table->char('status'); //0 - off, 1 - active, 2 - done, 3 - archived
             $table->string('name');
             $table->text('description');
+            $table->Integer('by_categories')->nullable();
             $table->char('actions_per_day');
             $table->Integer('activity_id')->unsigned()->default(1);
             $table->enum('type', ['spam', 'friendship']);
             $table->timestamps();
-
-            $table->index('activity_id');
-
-            $table->foreign('activity_id')
-                ->references('id')
-                ->on('activities')
-                ->onDelete('no action')
-                ->onUpdate('no action');
 
         });
     }
